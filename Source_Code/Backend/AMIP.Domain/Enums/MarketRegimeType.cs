@@ -1,0 +1,1 @@
+namespace AMIP.Domain.Enums; public enum MarketRegimeType { StrongUptrend, WeakUptrend, StrongDowntrend, WeakDowntrend, Sideways, HighVolatility, LowVolatility, Accumulation, Distribution, Breakout, Breakdown, Reversal }

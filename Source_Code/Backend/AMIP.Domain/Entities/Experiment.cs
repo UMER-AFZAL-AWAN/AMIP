@@ -1,0 +1,1 @@
+using System; namespace AMIP.Domain.Entities; public class Experiment { public Guid Id { get; set; } = Guid.NewGuid(); public string Name { get; set; } = string.Empty; public string ParametersJson { get; set; } = string.Empty; public string ResultsJson { get; set; } = string.Empty; public string Conclusion { get; set; } = string.Empty; public DateTime CreatedAt { get; set; } }

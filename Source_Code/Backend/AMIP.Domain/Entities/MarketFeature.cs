@@ -1,0 +1,1 @@
+using System; namespace AMIP.Domain.Entities; public class MarketFeature { public Guid Id { get; set; } = Guid.NewGuid(); public string Symbol { get; set; } = string.Empty; public DateTime Timestamp { get; set; } public string FeatureDataJson { get; set; } = string.Empty; }

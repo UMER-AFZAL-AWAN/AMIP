@@ -1,0 +1,1 @@
+using System.Threading.Tasks; namespace AMIP.Domain.Interfaces; public interface IMarketDataIngestionService { Task IngestHistoricalDataAsync(string symbol, string interval); Task StartRealtimeStreamAsync(string symbol, string interval); }

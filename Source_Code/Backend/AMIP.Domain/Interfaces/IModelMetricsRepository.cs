@@ -1,0 +1,1 @@
+using System.Threading.Tasks; using AMIP.Domain.Entities; namespace AMIP.Domain.Interfaces; public interface IModelMetricsRepository { Task<ModelMetrics?> GetMetricsAsync(string modelName); Task SaveMetricsAsync(ModelMetrics metrics); }

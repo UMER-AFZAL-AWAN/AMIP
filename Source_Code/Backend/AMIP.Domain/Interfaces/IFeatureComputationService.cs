@@ -1,0 +1,1 @@
+using System.Threading.Tasks; using AMIP.Domain.Entities; namespace AMIP.Domain.Interfaces; public interface IFeatureComputationService { Task<MarketFeature> ComputeFeaturesAsync(string symbol, string interval); }

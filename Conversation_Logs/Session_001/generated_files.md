@@ -1,0 +1,21 @@
+# Generated Files
+- Project_Context/project_state.md
+- Project_Context/tasks.md
+- Project_Context/handoff.md
+- Documentation/architecture.md
+- Documentation/api_reference.md
+- Documentation/getting_started.md
+- Conversation_Logs/Session_001/session_metadata.json
+- Conversation_Logs/Session_001/conversation.md
+- Conversation_Logs/Session_001/decisions.md
+- Conversation_Logs/Session_001/generated_files.md
+- Conversation_Logs/Session_001/commands_executed.md
+- User_Requirements/requirements.md
+- User_Requirements/assumptions.md
+- User_Requirements/feature_requests.md
+- Decisions/architecture_decisions.md
+- Decisions/technology_choices.md
+- Decisions/rejected_approaches.md
+- Decisions/future_considerations.md
+- Research/research_journal.md
+- Experiments/experiment_template.md

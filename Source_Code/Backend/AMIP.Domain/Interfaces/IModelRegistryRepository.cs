@@ -1,0 +1,1 @@
+using System.Collections.Generic; using System.Threading.Tasks; using AMIP.Domain.Entities; namespace AMIP.Domain.Interfaces; public interface IModelRegistryRepository { Task<IEnumerable<ModelRegistryEntry>> GetAllEntriesAsync(); Task SaveEntryAsync(ModelRegistryEntry entry); }

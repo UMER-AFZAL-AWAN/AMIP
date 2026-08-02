@@ -1,0 +1,1 @@
+using System; using System.Collections.Generic; using System.Threading.Tasks; using AMIP.Domain.Entities; namespace AMIP.Domain.Interfaces; public interface IFeatureRepository { Task<IEnumerable<MarketFeature>> GetFeaturesAsync(string symbol, DateTime from, DateTime to); Task SaveFeaturesAsync(IEnumerable<MarketFeature> features); }

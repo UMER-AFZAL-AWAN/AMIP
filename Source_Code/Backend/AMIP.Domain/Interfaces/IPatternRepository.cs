@@ -1,0 +1,1 @@
+using System.Collections.Generic; using System.Threading.Tasks; using AMIP.Domain.Entities; namespace AMIP.Domain.Interfaces; public interface IPatternRepository { Task<IEnumerable<MarketPattern>> GetSimilarPatternsAsync(string symbol, int limit); Task SavePatternAsync(MarketPattern pattern); }

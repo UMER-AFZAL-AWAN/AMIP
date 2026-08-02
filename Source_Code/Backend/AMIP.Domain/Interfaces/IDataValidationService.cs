@@ -1,0 +1,1 @@
+using System.Collections.Generic; using AMIP.Domain.Entities; namespace AMIP.Domain.Interfaces; public interface IDataValidationService { IEnumerable<ProcessedCandle> ValidateAndNormalize(IEnumerable<MarketCandle> candles); }

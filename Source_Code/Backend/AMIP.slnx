@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="AMIP.Api/AMIP.Api.csproj" />
+  <Project Path="AMIP.Application/AMIP.Application.csproj" />
+  <Project Path="AMIP.Domain/AMIP.Domain.csproj" />
+  <Project Path="AMIP.Infrastructure/AMIP.Infrastructure.csproj" />
+</Solution>

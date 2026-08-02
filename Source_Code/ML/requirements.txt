@@ -1,0 +1,16 @@
+numpy
+pandas
+scikit-learn
+xgboost
+lightgbm
+torch
+onnx
+onnxruntime
+psycopg2-binary
+sqlalchemy
+hdbscan
+matplotlib
+seaborn
+ta
+scipy
+joblib

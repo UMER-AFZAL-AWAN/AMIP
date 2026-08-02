@@ -1,0 +1,1 @@
+using System; namespace AMIP.Domain.Entities; public class MarketPattern { public Guid Id { get; set; } = Guid.NewGuid(); public string PatternId { get; set; } = string.Empty; public string EmbeddingJson { get; set; } = string.Empty; public int ClusterId { get; set; } public decimal SuccessRate { get; set; } }
