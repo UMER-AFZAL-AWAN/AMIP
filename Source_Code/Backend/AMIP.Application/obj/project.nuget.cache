@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "UrN1pQs0OFE=",
+  "dgSpecHash": "ef6ArU+UmV4=",
   "success": true,
-  "projectFilePath": "C:\\D\\Codes\\AMIP\\AI-Market-Intelligence-Platform\\Source_Code\\Backend\\AMIP.Application\\AMIP.Application.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\D\\Codes\\AMIP\\AMIP\\Source_Code\\Backend\\AMIP.Application\\AMIP.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\awanu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.10\\microsoft.extensions.dependencyinjection.abstractions.10.0.10.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -1,0 +1,12 @@
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\bin\Debug\net8.0\AMIP.Domain.deps.json
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\bin\Debug\net8.0\AMIP.Domain.dll
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\bin\Debug\net8.0\AMIP.Domain.pdb
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\AMIP.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\AMIP.Domain.AssemblyInfoInputs.cache
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\AMIP.Domain.AssemblyInfo.cs
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\AMIP.Domain.csproj.CoreCompileInputs.cache
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\AMIP.Domain.sourcelink.json
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\AMIP.Domain.dll
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\refint\AMIP.Domain.dll
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\AMIP.Domain.pdb
+C:\D\Codes\AMIP\AMIP\Source_Code\Backend\AMIP.Domain\obj\Debug\net8.0\ref\AMIP.Domain.dll
