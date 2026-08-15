@@ -17,6 +17,7 @@ public static class DependencyInjection
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddHttpClient<BinanceRestClient>();
+        services.AddSingleton<BinanceWebSocketClient>();
         
         services.AddScoped<IMarketDataRepository, MarketDataRepository>();
         services.AddScoped<IExperimentRepository, ExperimentRepository>();

@@ -3,7 +3,7 @@ using AMIP.Infrastructure.External;
 
 namespace AMIP.Infrastructure.Services;
 
-public class MarketDataIngestionService(BinanceRestClient binanceRestClient) : IMarketDataIngestionService
+public class MarketDataIngestionService(BinanceRestClient binanceRestClient, BinanceWebSocketClient binanceWebSocketClient) : IMarketDataIngestionService
 {
     public async Task IngestHistoricalDataAsync(string symbol, string interval)
     {
@@ -16,9 +16,11 @@ public class MarketDataIngestionService(BinanceRestClient binanceRestClient) : I
         await binanceRestClient.FetchHistoricalDataAsync(symbol, parsedInterval, startTime, endTime);
     }
 
-    public Task StartRealtimeStreamAsync(string symbol, string interval)
+    public async Task StartRealtimeStreamAsync(string symbol, string interval)
     {
-        // Real-time stream to be implemented
-        return Task.CompletedTask;
+        var parsedInterval = Enum.Parse<AMIP.Domain.Enums.CandleInterval>(interval, true);
+        
+        // This will block while running; typically called from a HostedService
+        await binanceWebSocketClient.StartRealtimeStreamAsync(symbol, parsedInterval, CancellationToken.None);
     }
 }

@@ -1,3 +1,4 @@
+using AMIP.Api.Services;
 using AMIP.Application;
 using AMIP.Infrastructure;
 using Microsoft.AspNetCore.Builder;
@@ -21,6 +22,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddHostedService<MarketDataHostedService>();
 
 var app = builder.Build();
 
