@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AMIP.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+671ff7e7e15e241da284ee115f4a21249bf5fdd0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+738ebd07de25fdce5e0524e549109e0b2e52abd5")]
 [assembly: System.Reflection.AssemblyProductAttribute("AMIP.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AMIP.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

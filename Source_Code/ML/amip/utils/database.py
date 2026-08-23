@@ -29,6 +29,20 @@ class MarketFeature(Base):
     Timestamp = Column(DateTime(timezone=True), nullable=False)
     FeatureDataJson = Column(Text, nullable=False)
 
+class ModelPrediction(Base):
+    __tablename__ = 'ModelPredictions'
+    
+    Id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    Direction = Column(Integer, nullable=False)        # 0=Down, 1=Neutral, 2=Up
+    UpProbability = Column(Float, nullable=False)
+    DownProbability = Column(Float, nullable=False)
+    NeutralProbability = Column(Float, nullable=False)
+    Confidence = Column(Float, nullable=False)
+    Risk = Column(Float, nullable=False)
+    ActualResult = Column(Integer, nullable=True)
+    Symbol = Column(String, nullable=False)
+    Timestamp = Column(DateTime(timezone=True), nullable=False)
+
 def get_engine(uri: str):
     return create_engine(uri)
 
