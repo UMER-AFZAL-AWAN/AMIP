@@ -4,6 +4,7 @@ import time
 import json
 import logging
 import numpy as np
+import pandas as pd
 from datetime import datetime, timezone
 
 # Add the parent directory to the path so we can import amip
@@ -16,6 +17,22 @@ logger = logging.getLogger(__name__)
 
 DB_URI = "postgresql://amip_admin:amip_secure_2026@localhost:5432/amip_market_intelligence"
 POLL_INTERVAL_SECONDS = 20
+MODELS_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../Models/trained'))
+SYMBOL = "BTCUSDT"
+
+
+def load_trained_model():
+    """Try to load a trained model from disk. Returns (model, True) or (None, False)."""
+    model_path = os.path.join(MODELS_DIR, f"xgboost_{SYMBOL}.joblib")
+    if os.path.exists(model_path):
+        try:
+            import joblib
+            model = joblib.load(model_path)
+            logger.info(f"Loaded trained model from {model_path}")
+            return model, True
+        except Exception as e:
+            logger.warning(f"Failed to load trained model: {e}. Falling back to heuristic.")
+    return None, False
 
 
 def generate_prediction(feature_dict: dict) -> dict:
@@ -78,8 +95,15 @@ def run_daemon():
     logger.info("Starting Prediction Inference Daemon...")
     engine = get_engine(DB_URI)
     
+    # Try to load a trained model
+    trained_model, use_model = load_trained_model()
+    if use_model:
+        logger.info("Using TRAINED MODEL for inference.")
+    else:
+        logger.info("No trained model found. Using HEURISTIC predictions.")
+    
     last_processed_time = None
-    symbol = "BTCUSDT"
+    symbol = SYMBOL
 
     while True:
         try:
@@ -109,8 +133,36 @@ def run_daemon():
             # 2. Deserialize the feature JSON
             feature_dict = json.loads(latest_feature.FeatureDataJson)
             
-            # 3. Run prediction
-            pred = generate_prediction(feature_dict)
+            # 3. Run prediction (trained model or heuristic)
+            if use_model and trained_model is not None:
+                try:
+                    feature_df = pd.DataFrame([feature_dict])
+                    proba = trained_model.predict_proba(feature_df)
+                    # Binary model: [P(down), P(up)]
+                    if proba.shape[1] == 2:
+                        down_p, up_p = float(proba[0][0]), float(proba[0][1])
+                        neutral_p = 0.0
+                    else:
+                        down_p, neutral_p, up_p = float(proba[0][0]), float(proba[0][1]), float(proba[0][2])
+                    
+                    direction = int(np.argmax([down_p, neutral_p, up_p]))
+                    confidence = float(max(down_p, neutral_p, up_p))
+                    entropy = -sum(p * np.log(p + 1e-8) for p in [down_p, neutral_p, up_p] if p > 0)
+                    risk = float(entropy / np.log(3))
+                    
+                    pred = {
+                        'direction': direction,
+                        'up_probability': up_p,
+                        'down_probability': down_p,
+                        'neutral_probability': neutral_p,
+                        'confidence': confidence,
+                        'risk': risk,
+                    }
+                except Exception as e:
+                    logger.warning(f"Model inference failed: {e}. Falling back to heuristic.")
+                    pred = generate_prediction(feature_dict)
+            else:
+                pred = generate_prediction(feature_dict)
             
             # 4. Save to database
             new_prediction = ModelPrediction(
