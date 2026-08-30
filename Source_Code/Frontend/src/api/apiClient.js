@@ -38,5 +38,13 @@ export const api = {
   getRegimeCurrent: (symbol = 'BTCUSDT') =>
     fetchApi(`/regime/current?symbol=${symbol}`),
     
+  getModelRegistry: () => fetchApi('/models/registry'),
+
+  getModelMetrics: (modelName) => fetchApi(`/models/metrics?modelName=${modelName}`),
+
+  getSimilarPatterns: (symbol = 'BTCUSDT', limit = 5) =>
+    fetchApi(`/patterns/similar?symbol=${symbol}&limit=${limit}`),
+
   getHealth: () => fetchApi('/health'),
 };
+

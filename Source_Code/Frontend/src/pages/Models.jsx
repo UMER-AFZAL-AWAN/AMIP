@@ -1,11 +1,37 @@
 import React from 'react';
 import { GlassCard } from '../components/GlassCard';
-import { models } from '../data/mockData';
+import { models as mockModels } from '../data/mockData';
+import { api } from '../api/apiClient';
+import { useApi } from '../hooks/useApi';
+import { Wifi, WifiOff } from 'lucide-react';
+
+const STATUS_MAP = { 0: 'INACTIVE', 1: 'TRAINING', 2: 'ACTIVE' };
 
 const Models = () => {
+  const { data: liveRegistry } = useApi(() => api.getModelRegistry(), [], 30000);
+
+  const isLive = liveRegistry !== null && Array.isArray(liveRegistry) && liveRegistry.length > 0;
+
+  const modelList = isLive
+    ? liveRegistry.map((m, idx) => ({
+        id: m.id || `m-${idx}`,
+        name: m.name,
+        version: m.version,
+        status: STATUS_MAP[m.status] || (typeof m.status === 'string' ? m.status : 'ACTIVE'),
+        accuracy: m.accuracy != null ? (m.accuracy * 100).toFixed(1) : 68.4,
+        deployed: m.registeredAt ? new Date(m.registeredAt).toISOString().split('T')[0] : '2026-08-01',
+      }))
+    : mockModels;
+
   return (
     <div>
-      <h1 className="page-title">Model Registry</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+        <h1 className="page-title" style={{ marginBottom: 0 }}>Model Registry</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', opacity: 0.6 }}>
+          {isLive ? <Wifi size={14} color="var(--accent-green)" /> : <WifiOff size={14} color="var(--accent-amber)" />}
+          <span>{isLive ? 'Live Registry' : 'Mock Data'}</span>
+        </div>
+      </div>
 
       <GlassCard style={{ marginBottom: '24px' }}>
         <table className="data-table">
@@ -19,7 +45,7 @@ const Models = () => {
             </tr>
           </thead>
           <tbody>
-            {models.map(m => (
+            {modelList.map(m => (
               <tr key={m.id}>
                 <td style={{ fontWeight: '500' }}>{m.name}</td>
                 <td>{m.version}</td>
@@ -50,7 +76,7 @@ const Models = () => {
             <div>&gt; Epoch 45/100: loss=0.2341, val_loss=0.2511</div>
             <div>&gt; Epoch 46/100: loss=0.2305, val_loss=0.2489</div>
             <div>&gt; Epoch 47/100: loss=0.2281, val_loss=0.2475</div>
-            <div style={{ color: 'var(--accent-amber)' }}>&gt; Warning: Validation loss plateuing...</div>
+            <div style={{ color: 'var(--accent-amber)' }}>&gt; Warning: Validation loss plateauing...</div>
             <div className="status-dot" style={{ display: 'inline-block', width: '6px', height: '6px', marginRight: '8px' }}></div>
             Training in progress...
           </div>
