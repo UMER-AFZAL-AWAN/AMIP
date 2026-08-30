@@ -1,0 +1,51 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vs/
+*.DotSettings.user
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# Node / Frontend
+node_modules/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Data & Models (large files)
+Models/trained/
+Data/raw/
+Data/processed/
+*.onnx
+*.pkl
+*.joblib
+*.h5
+*.pt
+
+# Docker
+*.log
+
+# Secrets
+appsettings.Production.json
